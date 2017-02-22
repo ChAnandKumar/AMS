@@ -5,4 +5,5 @@ package com.bartronics.ams.data;
  */
 
 public interface DataManager {
+    void setAccessToken(Object o);
 }

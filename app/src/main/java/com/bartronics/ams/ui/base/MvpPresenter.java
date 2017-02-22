@@ -13,27 +13,24 @@
  * limitations under the License
  */
 
-package com.bartronics.ams.di.component;
-
-import com.bartronics.ams.ui.splash.SplashScreen;
-import com.bartronics.ams.di.PerActivity;
-import com.bartronics.ams.di.module.ActivityModule;
-
-import dagger.Component;
+package com.bartronics.ams.ui.base;
 
 /**
  * Created by janisharali on 27/01/17.
  */
 
-@PerActivity
-@Component(dependencies = ApplicationComponent.class, modules = ActivityModule.class)
-public interface ActivityComponent {
 
-    void inject(SplashScreen activity);
+/**
+ * Every presenter in the app must either implement this interface or extend BasePresenter
+ * indicating the MvpView type that wants to be attached with.
+ */
+public interface MvpPresenter<V extends MvpView> {
 
-    /*void inject(LoginActivity activity);
+    void onAttach(V mvpView);
 
-    void inject(SplashActivity activity);
+    void onDetach();
 
-    void inject(AboutFragment fragment);*/
+    //void handleApiError(ANError error);
+
+    void setUserAsLoggedOut();
 }

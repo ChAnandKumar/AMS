@@ -13,27 +13,30 @@
  * limitations under the License
  */
 
-package com.bartronics.ams.di.component;
-
-import com.bartronics.ams.ui.splash.SplashScreen;
-import com.bartronics.ams.di.PerActivity;
-import com.bartronics.ams.di.module.ActivityModule;
-
-import dagger.Component;
+package com.bartronics.ams.ui.base;
 
 /**
  * Created by janisharali on 27/01/17.
  */
 
-@PerActivity
-@Component(dependencies = ApplicationComponent.class, modules = ActivityModule.class)
-public interface ActivityComponent {
+/**
+ * Base interface that any class that wants to act as a View in the MVP (Model View Presenter)
+ * pattern must implement. Generally this interface will be extended by a more specific interface
+ * that then usually will be implemented by an Activity or Fragment.
+ */
+public interface SubMvpView extends MvpView {
 
-    void inject(SplashScreen activity);
+    void onCreate();
 
-    /*void inject(LoginActivity activity);
+    void onStart();
 
-    void inject(SplashActivity activity);
+    void onResume();
 
-    void inject(AboutFragment fragment);*/
+    void onPause();
+
+    void onStop();
+
+    void onDestroy();
+
+    void attachParentMvpView(MvpView mvpView);
 }

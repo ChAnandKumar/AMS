@@ -5,4 +5,8 @@ package com.bartronics.ams.data;
  */
 
 public class AppDataManager implements DataManager{
+    @Override
+    public void setAccessToken(Object o) {
+
+    }
 }
